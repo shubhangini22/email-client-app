@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="app.min.css">
+    <style>
+         @-webkit-keyframes pulse {
+				0% {
+					background-color: #CCC;
+				}
+				25% {
+					background-color: #EEE;
+				}
+				50% {
+					background-color: #CCC;
+				}
+				75% {
+					background-color: #EEE;
+				}
+				100% {
+					background-color: #CCC;
+				}
+			}
+		
+      /* TODO */
+    </style>
+  </head>
+
+  <body>
+    <div class="app-page" data-page="home">
+      <div class="app-topbar blue">
+        <div class="app-title">Send an Email</div>
+      </div>
+      <div class="app-content">
+        <!--this paragraph is for class
+        app-section-->
+        <p class="app-section">
+         Click below to send an email.
+        </p>
+		<div class="app-section">
+			<div class="app-button" data-target="sendemail">Lists</div>
+		 </div>
+         <div class="app-section">
+        <div class="app-button" data-target="sendemail">Send new user</div>
+	 </div>
+	 </div>
+	 </div>
+	 <div class="app-page" data-page="sendemail">
+		<div class="app-topbar">
+			<div class="app-title">Sends an email</div>
+			<div class="right app-button" data-back>Done</div>
+		</div>
+
+		<div class="app-content">
+		<div class="app-section">
+				<input class="app-input" id="sender-email" placeholder="Sender Email Address">
+			</div>
+			<div class="app-section">
+				<input class="app-input" id="recipient-email" placeholder="Recipient Email Address">
+			</div>
+<!--placeholder hints the user-->
+			<form class="app-section">
+				<input class="app-input" name="subject" placeholder="Subject">
+				<textarea class="app-input" name="message" placeholder="Message"></textarea>
+				<div class="app-button green app-submit" id="send-button">Send</div>
+			</form>
+		</div>
+	</div>
+      <script src="zepto.js"></script>
+    <script src="app.min.js"></script>
+    <script>
+      
+      App.controller('home', function (page) {
+		  if(typeof localStorage !== 'undefined')
+		  {
+			  
+		  }
+     
+      });
+	  App.controller('sendemail', function (page) {
+       $(page).find('#send-button')
+	   .clickable()
+	   .on('click',function(){
+       //attempt to send an email  
+	   if(typeof localStorage!==undefined)
+	   {
+		  localStorage.setItem("sender-email",$("#sender-email").val());
+	   }
+	   else
+	   {
+		   
+	   }
+	   });
+	});
+	  try {
+        App.restore();
+      } catch (err) {
+        App.load('home');
+      }
+    </script>
+  </body>
+</html>
+<!--div section-->
