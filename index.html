@@ -85,7 +85,10 @@
        //attempt to send an email  
 	   if(typeof localStorage!==undefined)
 	   {
-		  localStorage.setItem("sender-email",$("#sender-email").val());
+		 if(localStorage.getItem("sender-email")!==null)
+		 {
+			 $(page).find("#sender-email").val(localStorage.getItem("sender-email"))
+		 }
 	   }
 	   else
 	   {
